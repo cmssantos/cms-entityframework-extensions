@@ -44,9 +44,8 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx 
         /p:CollectCoverage=true 
-        /p:CoverletOutputFormat=opencover 
-        /p:MergeWith="TestResults/coverage.json" 
-        /p:CoverletOutput="TestResults/coverage.opencover.xml"
+        /p:CoverletOutputFormat="cobertura,opencover" 
+        /p:CoverletOutput="TestResults/"
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -106,7 +105,12 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"cmssantos-entityframework-extensions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.cobertura.xml"
+        .\.sonar\scanner\dotnet-sonarscanner 
+        begin /k:"cmssantos-entityframework-extensions" 
+        /d:sonar.token="${{ secrets.SONAR_TOKEN }}" 
+        /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" 
+        /d:sonar.cs.opencover.reportsPaths="TestResults/coverage.opencover.xml" 
+        /d:sonar.cs.cobertura.reportsPaths="TestResults/coverage.cobertura.xml"
         dotnet build --no-incremental
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
