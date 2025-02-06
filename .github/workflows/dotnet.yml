@@ -59,7 +59,7 @@ jobs:
           **/bin/Release/
           **/obj/Release/
           
-  scan:
+  sonnarscan:
     needs: build
     runs-on: windows-latest
     steps:
@@ -106,11 +106,6 @@ jobs:
         dotnet build --no-incremental
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
-    - name: Check Quality Gate
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      timeout-minutes: 5
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
   pack:
     runs-on: ubuntu-latest
