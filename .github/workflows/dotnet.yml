@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-dotnet@v4.3.0
       with:
         dotnet-version: |
+          6.0.x
           8.0.x
 
     - name: Cache NuGet packages
@@ -64,6 +65,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
+            6.0.x
             8.0.x
             
       - name: Cache NuGet packages
@@ -131,6 +133,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
+            6.0.x
             8.0.x
           
       - name: Download artifacts
