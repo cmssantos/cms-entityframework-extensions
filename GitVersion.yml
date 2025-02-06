@@ -1,10 +1,6 @@
 mode: ContinuousDelivery
 tag-prefix: '[vV]'
-major-version-bump-message: \+semver:\s?(breaking|major)
-minor-version-bump-message: \+semver:\s?(feature|minor)
-patch-version-bump-message: \+semver:\s?(fix|patch)
-no-bump-message: \+semver:\s?(none|skip)
-commit-message-incrementing: Enabled
+commit-message-incrementing: Disabled
 
 branches:
   develop:
@@ -24,10 +20,26 @@ branches:
     tracks-release-branches: false
     is-main-branch: true
 
-  release:
-    regex: ^releases?[/-]
+  hotfix:
+    regex: ^hotfix[/-]
     label: ""
     increment: Patch
+    is-release-branch: false
+    prevent-increment: false
+    source-branches: [main, develop]
+
+  feature:
+    regex: ^feature[/-]
+    label: ""
+    increment: Minor
+    is-release-branch: false
+    prevent-increment: false
+    source-branches: [develop]
+
+  release:
+    regex: ^release[/-]
+    label: ""
+    increment: None
     is-release-branch: true
     prevent-increment: true
     source-branches: [main]
