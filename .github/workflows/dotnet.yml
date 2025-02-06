@@ -27,7 +27,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4.3.0
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - name: Cache NuGet packages
         uses: actions/cache@v4
@@ -55,7 +57,7 @@ jobs:
           name: test-results
           path: TestResults/**/* 
         if: always()
-        
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -129,7 +131,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - name: Cache NuGet packages
         uses: actions/cache@v4
@@ -190,7 +194,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -199,7 +205,8 @@ jobs:
           path: nupkgs
 
       - name: Publish NuGet package
-        run: dotnet nuget push nupkgs/*.nupkg \
-          --api-key ${{ secrets.NUGET_API_KEY }} \
-          --source https://api.nuget.org/v3/index.json \
-          --skip-duplicate
+        run: |
+          dotnet nuget push nupkgs/*.nupkg \
+            --api-key ${{ secrets.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
