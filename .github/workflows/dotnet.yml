@@ -44,7 +44,7 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx 
         /p:CollectCoverage=true 
-        /p:CoverletOutputFormat="cobertura,opencover" 
+        /p:CoverletOutputFormat="cobertura;opencover" 
         /p:CoverletOutput="TestResults/"
 
     - name: Upload test results
