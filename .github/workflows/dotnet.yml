@@ -42,7 +42,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx --coverage-output-format opencover
+      run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
