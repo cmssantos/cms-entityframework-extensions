@@ -1,10 +1,14 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.EntityFramework.Extensions", "src\Cms.EntityFramework.Extensions\Cms.EntityFramework.Extensions.csproj", "{728AF003-9A6E-79B4-32B4-643E8FA7B193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1EA80645-B9BB-455D-9D6F-C8FB45DC0500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.EntityFramework.Extensions.Tests", "tests\Cms.EntityFramework.Extensions.Tests\Cms.EntityFramework.Extensions.Tests.csproj", "{CF2B05B3-34D0-47F3-90BF-8B2180987CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,12 +20,17 @@ Global
 		{728AF003-9A6E-79B4-32B4-643E8FA7B193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{728AF003-9A6E-79B4-32B4-643E8FA7B193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{728AF003-9A6E-79B4-32B4-643E8FA7B193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2B05B3-34D0-47F3-90BF-8B2180987CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2B05B3-34D0-47F3-90BF-8B2180987CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2B05B3-34D0-47F3-90BF-8B2180987CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2B05B3-34D0-47F3-90BF-8B2180987CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{728AF003-9A6E-79B4-32B4-643E8FA7B193} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{CF2B05B3-34D0-47F3-90BF-8B2180987CCF} = {1EA80645-B9BB-455D-9D6F-C8FB45DC0500}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A17FB2A-BBC9-49CA-A85B-D1E5E9F06FF0}
