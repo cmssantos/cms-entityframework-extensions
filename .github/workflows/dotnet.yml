@@ -28,7 +28,7 @@ jobs:
           8.0.x
 
     - name: Cache NuGet packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -42,7 +42,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults
+      run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx --coverage-output-format opencover
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -102,7 +102,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"cmssantos-entityframework-extensions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.cobertura.xml"
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"cmssantos-entityframework-extensions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.opencover.xml"
         dotnet build --no-incremental
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
@@ -124,7 +124,7 @@ jobs:
             8.0.x
             
       - name: Cache NuGet packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}

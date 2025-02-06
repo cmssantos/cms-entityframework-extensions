@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
+// Copyright(c) Cleudice Santos. All Rights Reserved. Licensed under the MIT License.  See License in the project root for license information.
 namespace Cms.EntityFramework.Extensions.Data.Specifications;
 
 /// <summary>
